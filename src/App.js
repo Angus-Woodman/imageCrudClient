@@ -9,14 +9,20 @@ class App extends React.Component {
 
     fetch(proxyurl + urlBackend)
     .then((r) => r.json())
-    .then(console.log)
+    .then(this.getInfo)
     .catch((err) => console.warn("Oh dear...", err))
+  }
+
+  getInfo = (item) => {
+    console.log(item[0].avatar)
+    this.setState({imageURL: item[0].avatar})
   }
 
   render() {
     return (
       <>
         <h1>Client side of Image Crud practice application</h1>
+        <img src={this.state.imageURL}></img>
       </>
     );
   }
