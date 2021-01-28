@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles/App.css";
 class App extends React.Component {
-  state = {};
+  state = {imgData:[{avatar:''}]};
 
   componentDidMount() {
     let urlBackend = 'https://img-crud.herokuapp.com/user';
@@ -14,15 +14,25 @@ class App extends React.Component {
   }
 
   getInfo = (item) => {
-    console.log(item[0].avatar)
-    this.setState({imageURL: item[0].avatar})
+    console.log(item)
+    this.setState({
+      imgData: item
+    })
   }
 
   render() {
     return (
       <>
         <h1>Client side of Image Crud practice application</h1>
-        <img src={this.state.imageURL}></img>
+        {this.state.imgData.map(item => (<div key={item._id}>
+          <img style={{width: 300}} src={item.avatar}></img>
+          <button>Edit</button>
+          <button>Delete</button>
+          </div>
+        ))}
+        <button>Add</button>
+        <label htmlFor="userfile">Choose file:</label>
+        <input type="file" id="userfile" name="userfile"></input>
       </>
     );
   }
