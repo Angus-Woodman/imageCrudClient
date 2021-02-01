@@ -38,6 +38,7 @@
     "@babel/preset-react": "^7.10.4",
     "node-notifier": "^9.0.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-modal": "^3.12.1"
   }
 }
