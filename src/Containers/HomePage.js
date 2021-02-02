@@ -20,6 +20,14 @@ class HomePage extends Component {
       })
     }
 
+    handleDelete = (idx) => {
+      let urlBackend = `https://img-crud.herokuapp.com/user${idx}`;
+      // let urlBackend = `http://localhost:5000/user/${idx}`
+      fetch(urlBackend, {method:'DELETE'})
+      .then(r => r.json())
+      .catch(console.warn)
+    }
+
     render() {
       return (
         <>
@@ -31,8 +39,7 @@ class HomePage extends Component {
             <p>Lens: {item.lens}</p>
             <p>emojis: {item.emojis}</p>
             <p>comments: {item.comments}</p>
-            <button>Edit</button>
-            <button>Delete</button>
+            <button onClick={() => this.handleDelete(item._id)}>Delete</button>
             </div>
           ))}
           <AddImage/>
