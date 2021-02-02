@@ -10,17 +10,17 @@ class AddImageModal extends Component {
       handleFileChange = (e) => {
         const files = e.target.files
         this.setState({imgFiles:files[0]})
-        // const formData = new FormData()
-        // formData.append('image', files[0])
-        // console.log(formData)
-        // console.log(files[0])
       }
 
       handleCloseModal(e) {
           e.preventDefault()
           let urlBackend = 'https://img-crud.herokuapp.com/user';
+        //   let urlBackend = 'http://localhost:5000/user'
           const parseData = new FormData()
           parseData.append('image', this.state.imgFiles)
+          parseData.append('name', this.state.title)
+          parseData.append('camera', this.state.camera)
+          parseData.append('lens', this.state.lens)
 
           const options = {
             method: 'POST',

@@ -7,6 +7,10 @@ class AddImage extends Component {
         showModal: false,
       };
 
+    componentDidMount() {
+        ReactModal.setAppElement('body');
+    }
+
     handleOpenModal = () => {
         this.setState({ showModal: true });
       };
