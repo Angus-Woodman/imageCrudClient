@@ -21,7 +21,7 @@ class HomePage extends Component {
     }
 
     handleDelete = (idx) => {
-      let urlBackend = `https://img-crud.herokuapp.com/user${idx}`;
+      let urlBackend = `https://img-crud.herokuapp.com/user/${idx}`;
       // let urlBackend = `http://localhost:5000/user/${idx}`
       fetch(urlBackend, {method:'DELETE'})
       .then(r => r.json())
