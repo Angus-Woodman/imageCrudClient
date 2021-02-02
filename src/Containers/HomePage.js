@@ -5,8 +5,8 @@ class HomePage extends Component {
     state = {imgData:[{avatar:''}]};
 
     componentDidMount() {
-      // let urlBackend = 'https://img-crud.herokuapp.com/user';
-      let urlBackend = "http://localhost:5000/user"
+      let urlBackend = 'https://img-crud.herokuapp.com/user';
+      // let urlBackend = "http://localhost:5000/user"
 
       fetch(urlBackend)
       .then((r) => r.json())
