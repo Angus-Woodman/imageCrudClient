@@ -30,7 +30,7 @@ class HomePage extends Component {
     }
 
     handleEmoji = (e, idx) => {
-      let urlBackend = `https://img-crud.herokuapp.com/user/${}`;
+      let urlBackend = `https://img-crud.herokuapp.com/user/${this.state.imgData[idx]._id}`;
       // let urlBackend = `http://localhost:5000/user/${this.state.imgData[idx]._id}`   
       let emoji = e.target.className
       
