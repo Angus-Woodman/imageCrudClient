@@ -17,6 +17,7 @@ class AddImage extends Component {
 
     handleCloseModal = () => {
         this.setState({ showModal: false });
+        this.props.getInfo()
       };
 
     render() {
