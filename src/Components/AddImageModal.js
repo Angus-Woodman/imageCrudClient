@@ -15,7 +15,7 @@ class AddImageModal extends Component {
       handleCloseModal(e) {
           e.preventDefault()
           let urlBackend = 'https://img-crud.herokuapp.com/user';
-        //   let urlBackend = 'http://localhost:5000/user'
+        //  let urlBackend = 'http://localhost:5000/user'
           const parseData = new FormData()
           parseData.append('image', this.state.imgFiles)
           parseData.append('name', this.state.title)

@@ -6,16 +6,20 @@ class HomePage extends Component {
     state = {imgData:[{avatar:''}]};
 
     componentDidMount() {
+      this.getInfo()
+    }
+
+    getInfo = () => {
       let urlBackend = 'https://img-crud.herokuapp.com/user';
-      // let urlBackend = "http://localhost:5000/user"
+      //let urlBackend = "http://localhost:5000/user"
 
       fetch(urlBackend)
       .then((r) => r.json())
-      .then(this.getInfo)
+      .then(this.setInfo)
       .catch((err) => console.warn("Oh dear...", err))
     }
 
-    getInfo = (item) => {
+    setInfo = (item) => {
       this.setState({
         imgData: item
       })
@@ -23,15 +27,16 @@ class HomePage extends Component {
 
     handleDelete = (idx) => {
       let urlBackend = `https://img-crud.herokuapp.com/user/${idx}`;
-      // let urlBackend = `http://localhost:5000/user/${idx}`
+      //let urlBackend = `http://localhost:5000/user/${idx}`
       fetch(urlBackend, {method:'DELETE'})
       .then(r => r.json())
+      .then(this.getInfo)
       .catch(console.warn)
     }
 
     handleEmoji = (e, idx) => {
       let urlBackend = `https://img-crud.herokuapp.com/user/${this.state.imgData[idx]._id}`;
-      // let urlBackend = `http://localhost:5000/user/${this.state.imgData[idx]._id}`   
+      //let urlBackend = `http://localhost:5000/user/${this.state.imgData[idx]._id}`   
       let emoji = e.target.className
       
       let value = parseInt(this.state.imgData[idx].[emoji])+1
@@ -48,6 +53,7 @@ class HomePage extends Component {
 
       fetch(urlBackend, options)
       .then(r => r.json())
+      .then(this.getInfo)
       .catch(console.warn)
 
     }
@@ -66,7 +72,7 @@ class HomePage extends Component {
             <button onClick={() => this.handleDelete(item._id)}>Delete</button>
             </div>
           ))}
-          <AddImage/>
+          <AddImage getInfo={this.getInfo.bind(this)}/>
         </>
       );
     }
