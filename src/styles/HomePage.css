@@ -1,4 +1,80 @@
-.card {
-    width:100%
+body, .button {
+    font-family: "Work Sans", sans-serif;
+  }
+  
+header {
+    background-color: #f3f3f3;
+    text-align: center;
+  }
+
+h6 {
+    padding: 20px;
+    text-align: center;
+  }
+
+#pageName {
+    color: black;
+    font-family: "Lily Script One", cursive;
+    font-size: 100px;
+    font-weight: bold;
+    height: auto;
+    padding: 20px 20px 0px 20px;
+  }
+
+#cardContainer{
+    border: 3px solid black;
+    margin:1vw;
+    display:flex;
+    flex-wrap: wrap;
 }
 
+.card{
+    display: block;
+    border: 3px solid black;
+    margin:auto;
+    margin-top:1vh;
+    margin-bottom: 1vh;
+    width:45vw;
+    height: 60vh; 
+    /* overflow: scroll; */
+}
+
+.cardImage{
+    margin-top: 10px;
+    height:80%;
+    overflow: scroll;
+}
+
+.card-body{
+    display:flex
+}
+
+.card-text{
+    margin:auto;
+}
+
+.card-img-top{
+    display: block;
+    width:80%;
+    margin: auto;
+}
+
+.emojiContainer{
+    margin-bottom:2px;
+    margin-left:2px;
+}
+.emoji1{
+    margin-right: 2px;
+}
+.emoji2{
+    margin-right: 2px;
+}
+.emoji3{
+    margin-right: 2px;
+}
+
+.deleteButton{
+    position:absolute;
+    bottom:0;
+    right:0;
+}
