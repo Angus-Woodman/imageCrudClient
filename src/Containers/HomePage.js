@@ -61,18 +61,27 @@ class HomePage extends Component {
     render() {
       return (
         <>
-          <h1>Client side of Image Crud practice application</h1>
-          {this.state.imgData.map((item,idx) => (<div key={idx} className='card'>
-            <img style={{width: 300}} src={item.avatar}></img>
-            <p>name: {item.name}</p>
-            <p>Camera: {item.camera}</p>
-            <p>Lens: {item.lens}</p>
-            <p>emojis: <button className='emoji1' onClick={(e) => this.handleEmoji(e, idx)}>😀</button> {item.emoji1} <button className='emoji2' onClick={(e) => this.handleEmoji(e, idx)}>👍</button> {item.emoji2} <button className='emoji3' onClick={(e) => this.handleEmoji(e, idx)}>💘</button>{item.emoji3}</p>
-            <p>comments: {item.comments}</p>
-            <button onClick={() => this.handleDelete(item._id)}>Delete</button>
+          <AddImage getInfo={this.getInfo.bind(this)}/>
+          <div id='cardContainer'>
+          {this.state.imgData.reverse().map((item,idx) => (
+            <div key={idx} className="card">
+              <div className='cardImage'>
+                <img className='card-img-top' src={item.avatar} alt="Card image"/>
+              </div>
+              <div className="card-body">
+                  <p className="card-text">name: {item.name}  </p>
+                  <p className="card-text">Camera: {item.camera}  </p>
+                  <p className="card-text">Lens: {item.lens}  </p>
+              </div>
+              <div className='emojiContainer'><a className='emoji1' onClick={(e) => this.handleEmoji(e, idx)}>😀</a> +{item.emoji1} <a className='emoji2' onClick={(e) => this.handleEmoji(e, idx)}>👍</a> +{item.emoji2} <a className='emoji3' onClick={(e) => this.handleEmoji(e, idx)}>💘</a>+{item.emoji3}</div>
+              <button className='deleteButton' onClick={() => this.handleDelete(item._id)}>Delete</button>
+              
+
+            {/*  */}
+            
             </div>
           ))}
-          <AddImage getInfo={this.getInfo.bind(this)}/>
+          </div>
         </>
       );
     }
