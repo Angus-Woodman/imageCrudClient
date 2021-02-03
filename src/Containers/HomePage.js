@@ -75,10 +75,7 @@ class HomePage extends Component {
               </div>
               <div className='emojiContainer'><a className='emoji1' onClick={(e) => this.handleEmoji(e, idx)}>😀</a> +{item.emoji1} <a className='emoji2' onClick={(e) => this.handleEmoji(e, idx)}>👍</a> +{item.emoji2} <a className='emoji3' onClick={(e) => this.handleEmoji(e, idx)}>💘</a>+{item.emoji3}</div>
               <button className='deleteButton' onClick={() => this.handleDelete(item._id)}>Delete</button>
-              
-
-            {/*  */}
-            
+                          
             </div>
           ))}
           </div>
