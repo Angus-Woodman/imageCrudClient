@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 
 class AddImageModal extends Component {
+    state = {
+        loading: false,
+    };
 
     handleInput = (e) => {
         const { name, value } = e.target;
@@ -14,6 +17,9 @@ class AddImageModal extends Component {
 
       handleCloseModal(e) {
           e.preventDefault()
+
+          this.setState({loading: true,})
+
           let urlBackend = 'https://img-crud.herokuapp.com/user';
         //  let urlBackend = 'http://localhost:5000/user'
           const parseData = new FormData()
@@ -36,51 +42,56 @@ class AddImageModal extends Component {
     render() {
         return (
             <>
-                <button onClick={this.props.onClick}>Close</button>
+                {this.state.loading && <p id='modalLoading'>Loading...</p>}
+                {!this.state.loading &&
+                <div id='modalMain'>
+                    <button onClick={this.props.onClick}>Close</button>
 
-                <form id="addPlayerForm" onSubmit={(e) => this.handleCloseModal(e)}>
+                    <form id="addPlayerForm" onSubmit={(e) => this.handleCloseModal(e)}>
 
-                    <input
-                        required
-                        id="title"
-                        name="title"
-                        type="text"
-                        maxLength="10"
-                        placeholder="Untitled"
-                        onChange={this.handleInput}
-                    ></input>
+                        <input
+                            required
+                            id="title"
+                            name="title"
+                            type="text"
+                            maxLength="10"
+                            placeholder="Untitled"
+                            onChange={this.handleInput}
+                        ></input>
 
-                    <input
-                        required
-                        id="camera"
-                        name="camera"
-                        type="text"
-                        maxLength="10"
-                        placeholder="Camera type"
-                        onChange={this.handleInput}
-                    ></input>
+                        <input
+                            required
+                            id="camera"
+                            name="camera"
+                            type="text"
+                            maxLength="10"
+                            placeholder="Camera type"
+                            onChange={this.handleInput}
+                        ></input>
 
-                    <input
-                        required
-                        id="lens"
-                        name="lens"
-                        type="text"
-                        maxLength="10"
-                        placeholder="Lens"
-                        onChange={this.handleInput}
-                    ></input>
+                        <input
+                            required
+                            id="lens"
+                            name="lens"
+                            type="text"
+                            maxLength="10"
+                            placeholder="Lens"
+                            onChange={this.handleInput}
+                        ></input>
 
-                    <label htmlFor="imageFile">Choose file:</label>
-                    <input 
-                        required 
-                        type="file" 
-                        id="imageFile" 
-                        name="imageFile"
-                        onChange={this.handleFileChange}
-                    ></input>
+                        <label htmlFor="imageFile">Choose file:</label>
+                        <input 
+                            required 
+                            type="file" 
+                            id="imageFile" 
+                            name="imageFile"
+                            onChange={this.handleFileChange}
+                        ></input>
 
-                    <input id="submitPlayerButton" type="submit"></input>
-                </form>
+                        <input id="submitPlayerButton" type="submit"></input>
+                    </form>
+                </div>
+                }
             </>
 
         );
